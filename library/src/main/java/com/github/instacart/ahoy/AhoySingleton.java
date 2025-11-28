@@ -66,4 +66,16 @@ public class AhoySingleton {
     public static void saveExtras(Map<String, Object> extraParams) {
         sInstance.saveExtras(extraParams);
     }
+
+    /**
+     * Set a client-generated visit token. This allows the visit token to be available
+     * immediately, before any network calls complete. The server will accept client-generated
+     * tokens (UUIDs) and associate all requests with this visit.
+     *
+     * @param token The visit token (should be a UUID)
+     * @param visitDuration Duration in milliseconds before the visit expires
+     */
+    public static void setVisitToken(String token, long visitDuration) {
+        sInstance.setVisitToken(token, visitDuration);
+    }
 }

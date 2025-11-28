@@ -242,6 +242,23 @@ public class Ahoy {
         return visitorToken;
     }
 
+    /**
+     * Set a client-generated visit token. This allows the visit token to be available
+     * immediately, before any network calls complete. The server will accept client-generated
+     * tokens (UUIDs) and associate all requests with this visit.
+     *
+     * @param token The visit token (should be a UUID)
+     * @param visitDuration Duration in milliseconds before the visit expires
+     */
+    public void setVisitToken(@NonNull String token, long visitDuration) {
+        if (shutdown) {
+            throw new IllegalArgumentException("Ahoy has been shutdownAndClear");
+        }
+        long expiresAt = System.currentTimeMillis() + visitDuration;
+        Visit newVisit = Visit.create(token, visit.extraParams(), expiresAt);
+        saveVisit(newVisit);
+    }
+
     public void addVisitListener(VisitListener listener) {
         visitListeners.add(listener);
     }
