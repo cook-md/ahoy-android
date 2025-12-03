@@ -159,7 +159,8 @@ public class Ahoy {
                     return;
                 }
             }
-            updateQueue.add(0, NewVisitRequest.create(VisitParams.create(visitorToken, null, null)));
+            // Pass current visit so delegate can reuse its token if already set
+            updateQueue.add(0, NewVisitRequest.create(VisitParams.create(visitorToken, visit, null)));
         }
     }
 

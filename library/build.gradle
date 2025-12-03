@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.cooklang'
+group = 'com.github.cook-md'
 version = project.versionName
 
 def gprProperties = new Properties()
@@ -100,7 +100,7 @@ dependencies {
 publishing {
     publications {
         ahoyAndroid(MavenPublication) {
-            groupId = 'com.github.cooklang'
+            groupId = 'com.github.cook-md'
             artifactId = 'ahoy-android'
             version = project.versionName
             afterEvaluate {
@@ -110,12 +110,12 @@ publishing {
             pom {
                 name = 'ahoy-android'
                 description = 'Cooklang Parser Library for Android'
-                url = 'https://github.com/cooklang/ahoy-android'
+                url = 'https://github.com/cook-md/ahoy-android'
 
                 scm {
-                    connection = 'scm:git:git://github.com/cooklang/ahoy-android.git'
-                    developerConnection = 'scm:git:ssh://github.com:cooklang/ahoy-android.git'
-                    url = 'https://github.com/cooklang/ahoy-android'
+                    connection = 'scm:git:git://github.com/cook-md/ahoy-android.git'
+                    developerConnection = 'scm:git:ssh://github.com:cook-md/ahoy-android.git'
+                    url = 'https://github.com/cook-md/ahoy-android'
                 }
             }
         }
@@ -124,7 +124,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/cooklang/ahoy-android")
+            url = uri("https://maven.pkg.github.com/cook-md/ahoy-android")
             credentials {
                 username = gprProperties['gpr.user']
                 password = gprProperties['gpr.token']

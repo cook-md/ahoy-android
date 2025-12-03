@@ -190,7 +190,13 @@ public class Retrofit2Delegate implements AhoyDelegate {
             throw new IllegalArgumentException("Please provide visitor token");
         }
 
-        String visitToken = UUID.randomUUID().toString();
+        // Use existing visit token if provided, otherwise generate new one
+        String visitToken;
+        if (visitParams.visit() != null && !TypeUtil.isEmpty(visitParams.visit().visitToken())) {
+            visitToken = visitParams.visit().visitToken();
+        } else {
+            visitToken = UUID.randomUUID().toString();
+        }
         makeRequest(visitToken, visitParams, callback);
     }
 
